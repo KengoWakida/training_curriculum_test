@@ -40,13 +40,13 @@ class CalendarsController < ApplicationController
       end
 
       #Issue6 曜日の追加
-      wday_num = Date.today.wday
-      if wday_num + x >= 7  
+      wday_num = Date.today.wday + x
+      if wday_num  >= 7  
          wday_num = wday_num - 7
       end
 
       #Issue1 ハッシュロケットからシンボル型に直す
-      days = { month:  (@todays_date + x).month, date:  (@todays_date+x).day, plans:  today_plans, wday: wdays[wday_num + x]} #Issue6 曜日を追加
+      days = { month:  (@todays_date + x).month, date:  (@todays_date+x).day, plans:  today_plans, wday: wdays[wday_num]} #Issue6 曜日を追加
 
       @week_days.push(days)
     end
